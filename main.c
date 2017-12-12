@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:10:25 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/12 10:27:13 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/12 17:59:37 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 int			mouse_win(int x, int y, void *p)
 {
-	printf("%d, %d\n", x, y);
+//	printf("%d, %d\n", x, y);
 	//mlx_pixel_put(mlx, win, x, y, 0xFFFFFF);
 	//line(mlx, win, 0, 0, x ,y, 0xFF00);
 }
@@ -35,7 +35,7 @@ int			expose(t_fdf *p)
 {
 	t_vect		*ref;
 
-	p->center = vect_new(300, 200, 0);
+	/*p->center = vect_new(300, 200, 0);
 	ref = vect_new(0, 0, 0);
 
 	t_vect *s = vect_new(0,0,0);
@@ -57,13 +57,31 @@ int			expose(t_fdf *p)
 
 	e->x = -300;
 	e->y = -200;
-	draw_line(p, vect_to_point(s), vect_to_point(e), 0xFFFFFF);
+	draw_line(p, vect_to_point(s), vect_to_point(e), 0xFFFFFF);*/
+
+
 
 }
 
 int			main(int ac, char **av)
 {
 	t_fdf		fdf;
+
+	/*check file*/
+	if (ac != 2)
+		return (FALSE);
+	/* gap entre deux vector point afficher a l'ecran*/
+	fdf.coef_gap_vector = 20;
+	fdf.coef_top = 20;
+
+	printf("ret %d\n", fill_vector(&fdf, av[1]));
+	int i = 0;
+	while (fdf.grid[i] != NULL) {
+		print_vect(fdf.grid[i]);
+		i++;
+	}
+	ft_putstr("center :");
+	print_vect(fdf.center);
 
 	fdf.mlx = mlx_init();
 	if (!fdf.mlx)

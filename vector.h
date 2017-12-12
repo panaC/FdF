@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:41:51 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/11 18:52:26 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/12 17:07:29 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ t_vect				*vect_sub_vect(t_vect *a, t_vect *b);
 t_vect				*vect_add_scalar(t_vect *a, int b);
 t_vect				*vect_mul_scalar(t_vect *a, int b);
 t_vect				*vect_sub_scalar(t_vect *a, int b);
+void				print_vect(t_vect *v);
 
 #endif

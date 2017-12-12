@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:40:57 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/11 18:53:52 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/12 17:09:10 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,15 @@ t_vect				*vect_sub_scalar(t_vect *a, int b)
 	a->x -= b;
 	a->y -= b;
 	a->z -= b;
+}
+
+void				print_vect(t_vect *v)
+{
+	ft_putstr("x=");
+	ft_putnbr(v->x);
+	ft_putstr("y=");
+	ft_putnbr(v->y);
+	ft_putstr("z=");
+	ft_putnbr(v->z);
+	ft_putstr("\n");
 }
