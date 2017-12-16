@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:03:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 15:19:32 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 17:22:49 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int			expose_win(t_fdf *fdf)
 	calc_3d_projection(fdf);
 	mlx_clear_window(fdf->mlx, fdf->win);
 	draw_grid(fdf);
-	//line(fdf, vect_new(260, 180, 20), vect_new(280, 180, 40), 0xFFFFFF);
 }
 
 int			mouse_win(int x, int y, t_fdf *fdf)
@@ -52,5 +51,22 @@ int			key_win(int key, t_fdf *fdf)
 		calc_matrix_up(fdf);
 	else if (key == K_DOWN)
 		calc_matrix_down(fdf);
+	else if (key == 'k')
+		trans_up(fdf);
+	else if (key == 'j')
+		trans_down(fdf);
+	else if (key == 'h')
+		trans_left(fdf);
+	else if (key == 'l')
+		trans_right(fdf);
+	else if (key == 'a')
+		trans_max(fdf);
+	else if (key == 'z')
+		trans_min(fdf);
+	else if (key == 's')
+		peak_up(fdf);
+	else if (key == 'x')
+		peak_down(fdf);
+
 	return (TRUE);
 }

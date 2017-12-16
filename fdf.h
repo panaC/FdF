@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 15:46:13 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 17:30:46 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 #include "vector.h"
 
-# define				D_PLAN			400
+# define				D_PLAN			1000
 # define				D_USER			400
-# define				COEF_PEAK		5
+# define				COEF_PEAK		50
 # define				COEF_GAP		40
 # define				COLOR			0xFFFFFF
 # define				SIZE_WINDOWS_X	600
@@ -30,6 +30,8 @@
 # define				K_DOWN			65364
 
 # define				PI				3.14159265358979323846
+
+# define				MOVE_TRANS		20
 
 typedef struct			s_dot
 {
@@ -118,4 +120,12 @@ int			calc_matrix_left(t_fdf *fdf);
 int			calc_matrix_right(t_fdf *fdf);
 int			calc_matrix_up(t_fdf *fdf);
 int			calc_matrix_down(t_fdf *fdf);
+int			trans_up(t_fdf *fdf);
+int			trans_down(t_fdf *fdf);
+int			trans_right(t_fdf *fdf);
+int			trans_left(t_fdf *fdf);
+int			trans_max(t_fdf *fdf);
+int			trans_min(t_fdf *fdf);
+int			peak_down(t_fdf *fdf);
+int			peak_up(t_fdf *fdf);
 #endif

@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 10:04:19 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 15:35:53 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 17:41:26 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int				calc_matrix_left(t_fdf *fdf)
 	m->xz = - sin(PI / 18.0);
 	m->zx = sin(PI / 18.0);
 	m->zz = cos(PI / 18.0);
+	i = 0;
 	while (i < (fdf->col * fdf->row))
 	{
 		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
@@ -77,6 +78,7 @@ int				calc_matrix_right(t_fdf *fdf)
 	m->xz = - sin(- PI / 18.0);
 	m->zx = sin(- PI / 18.0);
 	m->zz = cos(- PI / 18.0);
+	i = 0;
 	while (i < (fdf->col * fdf->row))
 	{
 		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
@@ -96,6 +98,7 @@ int				calc_matrix_up(t_fdf *fdf)
 	m->yz = sin(PI / 18.0);
 	m->zy = - sin(PI / 18.0);
 	m->zz = cos(PI / 18.0);
+	i = 0;
 	while (i < (fdf->col * fdf->row))
 	{
 		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
@@ -115,6 +118,143 @@ int				calc_matrix_down(t_fdf *fdf)
 	m->yz = sin(- PI / 18.0);
 	m->zy = - sin(- PI / 18.0);
 	m->zz = cos(- PI / 18.0);
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
+		i++;
+	}
+	expose_win(fdf);
+	return (TRUE);
+}
+
+int				trans_up(t_fdf *fdf)
+{
+	t_matrix	*m;
+	int			i;
+
+	m = matrix_new();
+	m->ty = MOVE_TRANS;
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
+		i++;
+	}
+	expose_win(fdf);
+	return (TRUE);
+}
+
+int				trans_down(t_fdf *fdf)
+{
+	t_matrix	*m;
+	int			i;
+
+	m = matrix_new();
+	m->ty = - MOVE_TRANS;
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
+		i++;
+	}
+	expose_win(fdf);
+	return (TRUE);
+}
+
+int				trans_right(t_fdf *fdf)
+{
+	t_matrix	*m;
+	int			i;
+
+	m = matrix_new();
+	m->tx = MOVE_TRANS;
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
+		i++;
+	}
+	expose_win(fdf);
+	return (TRUE);
+}
+
+int				trans_left(t_fdf *fdf)
+{
+	t_matrix	*m;
+	int			i;
+
+	m = matrix_new();
+	m->tx = - MOVE_TRANS;
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
+		i++;
+	}
+	expose_win(fdf);
+	return (TRUE);
+}
+
+int				trans_max(t_fdf *fdf)
+{
+	t_matrix	*m;
+	int			i;
+
+	m = matrix_new();
+	m->tz = MOVE_TRANS;
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
+		i++;
+	}
+	expose_win(fdf);
+	return (TRUE);
+}
+
+int				trans_min(t_fdf *fdf)
+{
+	t_matrix	*m;
+	int			i;
+
+	m = matrix_new();
+	m->tz = - MOVE_TRANS;
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
+		i++;
+	}
+	expose_win(fdf);
+	return (TRUE);
+}
+
+int				peak_up(t_fdf *fdf)
+{
+	t_matrix	*m;
+	int			i;
+
+	m = matrix_new();
+	m->zz = 2.0;
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
+		i++;
+	}
+	expose_win(fdf);
+	return (TRUE);
+}
+
+int				peak_down(t_fdf *fdf)
+{
+	t_matrix	*m;
+	int			i;
+
+	m = matrix_new();
+	m->zz = (1.0 / 2.0);
+	i = 0;
 	while (i < (fdf->col * fdf->row))
 	{
 		fdf->grid[i]->dot3 = matrix_mul_vect(fdf->grid[i]->dot3, m);
