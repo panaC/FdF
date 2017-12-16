@@ -6,7 +6,7 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2017/12/12 15:52:33 by pierre           ###   ########.fr        #
+#    Updated: 2017/12/16 10:19:12 by pierre           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC=gcc
 
 CFLAGS= -I$(INC) -Iminilibx/ -Ilibft/includes
 NAME= mlx-test
-SRC = main.c vector.c matrix.c draw.c parser.c
+SRC = main.c vector.c matrix.c draw.c parser.c it.c init.c calcul.c
 OBJ = $(SRC:.c=.o)
 
 all	:$(NAME)

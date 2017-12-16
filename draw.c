@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 09:54:09 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/12 10:37:46 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 11:51:21 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 #include <stdlib.h>
 #include "fdf.h"
 #include "vector.h"
-#include "draw.h"
 
-void		line(t_fdf *a, t_point *s, t_point *e, int color)
+void		line(t_fdf *a, t_vect *s, t_vect *e, int color)
 {
 	int dx,dy,i,xinc,yinc,cumul,x,y ;
 	x = s->x ;
@@ -51,27 +50,47 @@ void		line(t_fdf *a, t_point *s, t_point *e, int color)
 		} }
 }
 
-int			draw_line(t_fdf *a, t_point *s1, t_point *s2, int color)
+int			draw_line(t_fdf *a, t_vect *s1, t_vect *s2, int color)
 {
-	t_point p1;
-	t_point p2;
+	t_vect p1;
+	t_vect p2;
 
 	p1.x = a->center->x - s1->x;
 	p1.y = a->center->y - s1->y;
 	p2.x = a->center->x + s2->x;
 	p2.y = a->center->y - s2->y;
 	line(a, &p1, &p2, color);
-	ft_memdel((void**)&s1);
-	ft_memdel((void**)&s2);
+	//ft_memdel((void**)&s1);
+	//ft_memdel((void**)&s2);
 }
 
-t_point		*vect_to_point(t_vect *v)
+/*
+ * A tester
+ */
+int			draw_grid(t_fdf *fdf)
 {
-	t_point	*ret;
+	int		i;
+	int		j;
 
-	if ((!(ret = ft_memalloc(sizeof(v)))))
-		return (NULL);
-	ret->x = v->x;
-	ret->y = v->y;
-	return (ret);
+	i = j = 0;
+	while (j < fdf->row)
+	{
+		while (i < fdf->col)
+		{
+			if (i < (fdf->col - 1))
+			{
+				line(fdf, fdf->grid[(j * fdf->col) + i]->dot2,
+						fdf->grid[(j * fdf->col) + i + 1]->dot2, 0xFFFFFF);
+			}
+			if (j < (fdf->row - 1))
+			{
+				line(fdf, fdf->grid[(j * fdf->col) + i]->dot2,
+						fdf->grid[((j + 1) * fdf->col) + i]->dot2, 0xFFFFFF);
+			}
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return (TRUE);
 }

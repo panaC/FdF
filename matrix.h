@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:41:51 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/11 19:16:04 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 14:02:52 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@
 
 typedef struct				s_matrix
 {
-	int			xx;
-	int			xy;
-	int			xz;
-	int			yx;
-	int			yy;
-	int			yz;
-	int			zx;
-	int			zy;
-	int			zz;
-	int			tx;
-	int			ty;
-	int			tz;
-	int			wx;
-	int			wy;
-	int			wz;
-	int			ww;
+	double					xx;
+	double					xy;
+	double					xz;
+	double					yx;
+	double					yy;
+	double					yz;
+	double					zx;
+	double					zy;
+	double					zz;
+	double					tx;
+	double					ty;
+	double					tz;
+	double					wx;
+	double					wy;
+	double					wz;
+	double					ww;
 }							t_matrix;
 
 t_matrix			*matrix_new();

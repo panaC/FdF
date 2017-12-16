@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:40:57 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/12 17:09:10 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 12:28:09 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_vect				*vect_new(int x, int y, int z)
 {
 	t_vect			*ret;
 
-	if ((!(ret = (t_vect*)ft_memalloc(sizeof(ret)))))
+	if ((!(ret = (t_vect*)ft_memalloc(sizeof(*ret)))))
 		return (NULL);
 	return(vect_init(ret, x, y, z));
 }
@@ -72,7 +72,7 @@ t_vect				*vect_cross_product(t_vect *a, t_vect *b)
 {
 	t_vect			*ret;
 
-	if ((!(ret = (t_vect*)ft_memalloc(sizeof(ret)))))
+	if ((!(ret = vect_new(0, 0, 0))))
 		return (NULL);
 	ret->x = a->y * b->z - a->z * b->y;
 	ret->y = a->z * b->x - a->x * b->z;

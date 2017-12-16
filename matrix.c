@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:40:57 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/11 19:18:35 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 10:42:39 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_matrix			*matrix_new()
 {
 	t_matrix		*ret;
 
-	if ((!(ret = (t_matrix*)ft_memalloc(sizeof(ret)))))
+	if ((!(ret = (t_matrix*)ft_memalloc(sizeof(*ret)))))
 		return (NULL);
 	return (matrix_identity(ret));
 }
@@ -46,19 +46,17 @@ t_matrix			*matrix_identity(t_matrix *m)
 
 t_vect			*matrix_mul_vect(t_vect *v, t_matrix *m)
 {
-	t_vect		*ret;
-
-	ret = vect_new(0, 0, 0);
-	ret->x = v->x * m->xx + v->y * m->yx + v->z * m->zx + m->tx;
-	ret->y = v->x * m->xy + v->y * m->yy + v->z * m->zy + m->ty;
-	ret->z = v->x * m->xz + v->y * m->yz + v->z * m->zz + m->tz;
-	ret->w = v->x * m->wx + v->y * m->wy + v->z * m->wz + m->ww;
-	if (ret->w != 1 && ret->w != 0)
+	v->x = v->x * m->xx + v->y * m->yx + v->z * m->zx + m->tx;
+	v->y = v->x * m->xy + v->y * m->yy + v->z * m->zy + m->ty;
+	v->z = v->x * m->xz + v->y * m->yz + v->z * m->zz + m->tz;
+	v->w = v->x * m->wx + v->y * m->wy + v->z * m->wz + m->ww;
+	if (v->w != 1 && v->w != 0)
 	{
-		ret->x /= ret->w;
-		ret->y /= ret->w;
-		ret->z /= ret->w;
+		v->x /= v->w;
+		v->y /= v->w;
+		v->z /= v->w;
 	}
+	return (v);
 }
 
 void			matrix_print(t_matrix *m)

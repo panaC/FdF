@@ -3,4 +3,4 @@
 *.o
 *.fillit
 *.good
-*.a
+libft/libft.a
