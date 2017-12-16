@@ -3,6 +3,6 @@
 *.o
 *.fillit
 *.good
-libft/*.a
+*/*.a
 *.test*
-mlx-testmlx-testmlx-testmlx-testmlx-testmlx-testmlx-testmlx-test
+mlx-test
