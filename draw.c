@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 09:54:09 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 11:51:21 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 17:59:01 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		line(t_fdf *a, t_vect *s, t_vect *e, int color)
 	yinc = ( dy > 0 ) ? 1 : -1 ;
 	dx = abs(dx) ;
 	dy = abs(dy) ;
-	mlx_pixel_put(a->mlx, a->win, x, y, color);
+	mlx_pixel_put(a->mlx, a->win, x, y, COLOR);
 	if ( dx > dy ) {
 		cumul = dx / 2 ;
 		for ( i = 1 ; i <= dx ; i++ ) {

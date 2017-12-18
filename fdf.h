@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 17:30:46 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/16 18:20:24 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 #include "vector.h"
 
-# define				D_PLAN			1000
+# define				D_PLAN			400
 # define				D_USER			400
-# define				COEF_PEAK		50
+# define				COEF_PEAK		10
 # define				COEF_GAP		40
 # define				COLOR			0xFFFFFF
 # define				SIZE_WINDOWS_X	600
