@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/19 17:15:19 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/19 17:37:42 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int			init_fdf(t_fdf *fdf)
 	t_list	*tmp;
 
 	ft_setparam_int(fdf->arg, "coef-gap", &(fdf->coef_gap_vector), COEF_GAP);
-	printf("init\n");
 	ft_setparam_int(fdf->arg, "coef-top", &(fdf->coef_top), COEF_PEAK);
 	ft_setparam_int(fdf->arg, "d-plan", &(fdf->d_plan), D_PLAN);
 	ft_setparam_int(fdf->arg, "d-user", &(fdf->d_user), D_USER);
