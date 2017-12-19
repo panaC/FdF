@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg.h                                              :+:      :+:    :+:   */
+/*   arg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/18 15:37:07 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/18 17:44:26 by pierre           ###   ########.fr       */
+/*   Created: 2017/12/19 13:43:55 by pierre            #+#    #+#             */
+/*   Updated: 2017/12/19 14:22:15 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _ARG_H
-# define _ARG_H
-
+#include <arg.h>
 #include <libft.h>
+#include "fdf.h"
 
-typedef struct				s_arg
+#include <stdio.h>
+
+static t_bool		error_arg(t_string s)
 {
-	t_string				short_param;
-	t_list					*long_param;
-	t_list					*data_param;
-	t_bool					state;
-}							t_arg;
+	ft_putstr("Usage ");
+	ft_putstr(s);
+	ft_putstr(" [option] maps\n");
+	return (FALSE);
+}
 
-t_arg			*get_arg(int ac, char **argv);
-t_bool			get_short_param(t_arg *a, t_string s);
-
-#endif
+t_bool				check_arg(t_fdf *fdf, int ac, char **av)
+{
+	if ((!(fdf->arg = ft_get_arg(ac, av))))
+		return (FALSE);
+	if (!fdf->arg->state || ft_lstlen(fdf->arg->data_param) != 1)
+		return (error_arg(av[0]));
+	return (TRUE);
+}

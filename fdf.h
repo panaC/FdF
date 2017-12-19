@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 18:20:24 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/19 17:04:41 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 # define _FDF_H
 
 #include "vector.h"
+#include <arg.h>
 
 # define				D_PLAN			400
 # define				D_USER			400
 # define				COEF_PEAK		10
 # define				COEF_GAP		40
 # define				COLOR			0xFFFFFF
-# define				SIZE_WINDOWS_X	600
-# define				SIZE_WINDOWS_Y	400
+# define				SIZE_X			600
+# define				SIZE_Y			400
 
 # define				K_ESCAPE		65307
 # define				K_LEFT			65361
@@ -57,6 +58,10 @@ typedef struct			s_dot
 typedef struct			s_fdf
 {
 	/*
+	 * arg
+	 */
+	t_arg				*arg;
+	/*
 	 * mlx
 	 */
 	void				*mlx;
@@ -73,6 +78,9 @@ typedef struct			s_fdf
 	int					row;
 	int					coef_gap_vector;
 	int					coef_top;
+	int					d_plan;
+	int					d_user;
+	int					color;
 	/*
 	 * grid
 	 */
@@ -107,7 +115,7 @@ int			draw_grid(t_fdf *fdf);
 /*
  * init.c
  */
-int			init_fdf(t_fdf *fdf, char *s);
+int			init_fdf(t_fdf *fdf);
 int			init_mlx(t_fdf *fdf);
 int			free_fdf(t_fdf *fdf);
 t_dot		*dot_new(t_vect *s1, t_vect *s2, t_vect *pos, int color);
@@ -128,4 +136,9 @@ int			trans_max(t_fdf *fdf);
 int			trans_min(t_fdf *fdf);
 int			peak_down(t_fdf *fdf);
 int			peak_up(t_fdf *fdf);
+/*
+ * arg.c
+ */
+t_bool				check_arg(t_fdf *fdf, int ac, char **av);
+
 #endif

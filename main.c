@@ -6,19 +6,19 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:10:25 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 15:37:24 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/19 17:09:13 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <mlx_int.h>
-#include <stdio.h>
 #include <libft.h>
 #include <stdlib.h>
 #include "vector.h"
 #include "matrix.h"
 #include "fdf.h"
 
+#include <stdio.h>
 
 /*
  * 1 check param
@@ -31,23 +31,20 @@
 int			main(int ac, char **av)
 {
 	t_fdf		*fdf;
-	int i = 0;
-
-	/*check file*/
-	if (ac != 2)
-		return (FALSE);
 
 	if ((!(fdf = (t_fdf*)ft_memalloc(sizeof(*fdf)))))
 		return (FALSE);
-	init_fdf(fdf, av[1]);
+	if (!check_arg(fdf, ac, av))
+		return (FALSE);
+	init_fdf(fdf);
 	printf("ret %d\n", fill_vector(fdf));
-/*	while (fdf->grid[i] != NULL) {
-		print_vect((fdf->grid[i])->dot3);
-		i++;
-	}
-	ft_putstr("center :");
-	print_vect(fdf->center);*/
 	calc_matrix_init(fdf);
+	init_mlx(fdf);
+	mlx_loop(fdf->mlx);
+	ft_memdel((void**)&fdf);
+	return (0);
+}
+
 /*	i = 0;
 	while (fdf->grid[i] != NULL) {
 		print_vect((fdf->grid[i])->dot3);
@@ -58,12 +55,10 @@ int			main(int ac, char **av)
 		print_vect((fdf->grid[i])->dot2);
 		i++;
 	}*/
-	printf("aa\n");
-	init_mlx(fdf);
-	printf("bb\n");
-	mlx_loop(fdf->mlx);
-	printf("cc\n");
-	ft_memdel((void**)&fdf);
+/*	while (fdf->grid[i] != NULL) {
+		print_vect((fdf->grid[i])->dot3);
+		i++;
+	}
+	ft_putstr("center :");
+	print_vect(fdf->center);*/
 
-	return (0);
-}

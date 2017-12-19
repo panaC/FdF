@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 14:38:28 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/19 17:15:19 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,29 @@
 #include "fdf.h"
 #include <stdio.h>
 
-int			init_fdf(t_fdf *fdf, char *s)
+int			init_fdf(t_fdf *fdf)
 {
-	/* gap entre deux vector point afficher a l'ecran*/
-	fdf->coef_gap_vector = COEF_GAP;
-	fdf->coef_top = COEF_PEAK;
-	fdf->size_win_x = SIZE_WINDOWS_X;
-	fdf->size_win_y = SIZE_WINDOWS_Y;
+	t_list	*tmp;
+
+	ft_setparam_int(fdf->arg, "coef-gap", &(fdf->coef_gap_vector), COEF_GAP);
+	printf("init\n");
+	ft_setparam_int(fdf->arg, "coef-top", &(fdf->coef_top), COEF_PEAK);
+	ft_setparam_int(fdf->arg, "d-plan", &(fdf->d_plan), D_PLAN);
+	ft_setparam_int(fdf->arg, "d-user", &(fdf->d_user), D_USER);
+	ft_setparam_hex(fdf->arg, "color", &(fdf->color), 0xFFFFFF);
+	ft_setparam_doubleint(fdf->arg, "size-win", &(fdf->size_win_x), SIZE_X, 0);
+	ft_setparam_doubleint(fdf->arg, "size-win", &(fdf->size_win_y), SIZE_Y, 1);
 	fdf->title = ft_strnew(50);
-	fdf->file = ft_strnew(ft_strlen(s) + 1);
-	fdf->file = ft_strcpy(fdf->file, s);
+	fdf->file = ft_strnew(fdf->arg->data_param->content_size + 1);
+	fdf->file = (t_string)ft_memcpy(fdf->file, (t_string)fdf->arg->data_param->content, fdf->arg->data_param->content_size);
 	ft_strlcat(fdf->title, "fdf -> ", 50);
 	ft_strlcat(fdf->title, fdf->file, 50);
 	fdf->grid = NULL;
-	fdf->center = vect_new(SIZE_WINDOWS_X / 2, SIZE_WINDOWS_Y / 2, 0);
+	fdf->center = vect_new(fdf->size_win_x / 2, fdf->size_win_y / 2, 0);
 	fdf->unit0 = vect_new(fdf->center->x, fdf->center->y, 0);
-	fdf->plan0 = vect_new(fdf->center->x, fdf->center->y, D_PLAN);
-	fdf->user0 = vect_new(fdf->center->x, fdf->center->y, D_PLAN + D_USER);
+	fdf->plan0 = vect_new(fdf->center->x, fdf->center->y, fdf->d_plan);
+	fdf->user0 = vect_new(fdf->center->x, fdf->center->y,
+			fdf->d_plan + fdf->d_user);
 	return (TRUE);
 }
 

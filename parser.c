@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/16 15:40:17 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/19 17:18:08 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,9 @@ int			fill_vector(t_fdf *a)
 //	printf("c\n");
 	if (((fd = open(a->file, O_RDONLY)) < 0))
 		return (FALSE);
-	printf("d\n");
+	sleep(0.01);
 	if (!fill_grid_vector(a, fd))
 		return (FALSE);
-	printf("e\n");
 	close(fd);
 	return (TRUE);
 }
