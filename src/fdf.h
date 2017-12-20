@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 11:52:53 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 18:18:10 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,23 @@ t_dot		*dot_new(t_vect *s1, t_vect *s2, t_vect *pos, int color);
  */
 int			calc_matrix_init(t_fdf *fdf);
 t_vect		*calc_3d_projection(t_fdf *fdf);
+/*
+ * calc_rot.c
+ */
 int			calc_matrix_left(t_fdf *fdf);
 int			calc_matrix_right(t_fdf *fdf);
 int			calc_matrix_up(t_fdf *fdf);
 int			calc_matrix_down(t_fdf *fdf);
+/*
+ * calc_tr.c
+ */
 int			trans_up(t_fdf *fdf);
 int			trans_down(t_fdf *fdf);
 int			trans_right(t_fdf *fdf);
 int			trans_left(t_fdf *fdf);
+/*
+ * calc_size.c
+ */
 int			trans_max(t_fdf *fdf);
 int			trans_min(t_fdf *fdf);
 int			peak_down(t_fdf *fdf);
@@ -139,6 +148,6 @@ int			peak_up(t_fdf *fdf);
 /*
  * arg.c
  */
-t_bool				check_arg(t_fdf *fdf, int ac, char **av);
+t_bool		check_arg(t_fdf *fdf, int ac, char **av);
 
 #endif
