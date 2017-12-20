@@ -6,7 +6,7 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2017/12/20 18:21:50 by pierre           ###   ########.fr        #
+#    Updated: 2017/12/20 19:32:30 by pierre           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ INCLIB=$(INC)/../lib
 
 CC=gcc
 LIB= libft
-CFLAGS= -I$(INC) -Iminilibx/ -Ilibft/includes
+CFLAGS= -Wall -Werror -Wextra -I$(INC) -Iminilibx/ -Ilibft/includes
 NAME= fdf
 SRC_DIR = src/
 SRC_FILE = main.c \

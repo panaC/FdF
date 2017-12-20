@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 11:12:27 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 19:33:37 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,37 @@
 
 #include <stdio.h>
 
+int			init_tab(t_fdf *fdf)
+{
+	(fdf->ev[0]).key = K_LEFT;
+	(fdf->ev[0]).ft = calc_matrix_left;
+	(fdf->ev[1]).key = K_RIGHT;
+	(fdf->ev[1]).ft = calc_matrix_right;
+	(fdf->ev[2]).key = K_UP;
+	(fdf->ev[2]).ft = calc_matrix_up;
+	(fdf->ev[3]).key = K_DOWN;
+	(fdf->ev[3]).ft = calc_matrix_down;
+	(fdf->ev[4]).key = 'k';
+	(fdf->ev[4]).ft = trans_up;
+	(fdf->ev[5]).key = 'j';
+	(fdf->ev[5]).ft = trans_down;
+	(fdf->ev[6]).key = 'h';
+	(fdf->ev[6]).ft = trans_left;
+	(fdf->ev[7]).key = 'l';
+	(fdf->ev[7]).ft = trans_right;
+	(fdf->ev[8]).key = 'a';
+	(fdf->ev[8]).ft = trans_max;
+	(fdf->ev[9]).key = 'z';
+	(fdf->ev[9]).ft = trans_min;
+	(fdf->ev[10]).key = 's';
+	(fdf->ev[10]).ft = peak_up;
+	(fdf->ev[11]).key = 'x';
+	(fdf->ev[11]).ft = peak_down;
+	return (TRUE);
+}
+
 int			init_fdf(t_fdf *fdf)
 {
-	t_list	*tmp;
-
 	ft_setparam_int(fdf->arg, "coef-gap", &(fdf->coef_gap_vector), COEF_GAP);
 	ft_setparam_int(fdf->arg, "coef-top", &(fdf->coef_top), COEF_PEAK);
 	ft_setparam_int(fdf->arg, "d-plan", &(fdf->d_plan), D_PLAN);
@@ -42,6 +69,7 @@ int			init_fdf(t_fdf *fdf)
 	fdf->plan0 = ft_vect_new(fdf->center->x, fdf->center->y, fdf->d_plan);
 	fdf->user0 = ft_vect_new(fdf->center->x, fdf->center->y,
 			fdf->d_plan + fdf->d_user);
+	init_tab(fdf);
 	return (TRUE);
 }
 

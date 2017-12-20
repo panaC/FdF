@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 11:50:07 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 19:33:20 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int			set_vector(t_fdf *a, int x, int y, int z)
 
 int			fill_vector(t_fdf *a)
 {
-	t_vect			ptr;
 	int				fd;
 
 	if (!ft_strlen(a->file))

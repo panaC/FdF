@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 09:54:09 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 17:45:57 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 19:33:02 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int			draw_line(t_fdf *a, t_vect *s1, t_vect *s2, int color)
 	line(a, &p1, &p2, color);
 	//ft_memdel((void**)&s1);
 	//ft_memdel((void**)&s2);
+	return (TRUE);
 }
 
 int			draw_grid(t_fdf *fdf)

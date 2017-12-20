@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:03:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 10:23:47 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 19:30:06 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,47 +25,22 @@ int			expose_win(t_fdf *fdf)
 	return (TRUE);
 }
 
-static int	static_key(int key, t_fdf *fdf)
-{
-	if (key == 'k')
-		trans_up(fdf);
-	else if (key == 'j')
-		trans_down(fdf);
-	else if (key == 'h')
-		trans_left(fdf);
-	else if (key == 'l')
-		trans_right(fdf);
-	else if (key == 'a')
-		trans_max(fdf);
-	else if (key == 'z')
-		trans_min(fdf);
-	else if (key == 's')
-		peak_up(fdf);
-	else if (key == 'x')
-		peak_down(fdf);
-	else
-		return (FALSE);
-	return (TRUE);
-}
-
 int			key_win(int key, t_fdf *fdf)
 {
+	int		i;
+
+	i = 0;
 	if (key == K_ESCAPE)
 	{
 		free_fdf(&fdf);
 		exit(0);
 	}
-	else if (key == K_LEFT)
-		calc_matrix_left(fdf);
-	else if (key == K_RIGHT)
-		calc_matrix_right(fdf);
-	else if (key == K_UP)
-		calc_matrix_up(fdf);
-	else if (key == K_DOWN)
-		calc_matrix_down(fdf);
-	else if (static_key(key, fdf))
-		;
-	else return (FALSE);
+	while (i < 12)
+	{
+		if ((fdf->ev[i]).key == key)
+			(fdf->ev[i]).ft(fdf);
+		i++;
+	}
 	return (TRUE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:47:24 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 19:32:00 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 
 # define				MOVE_TRANS		20
 
+typedef struct s_tab	t_tab;
+typedef struct s_fdf	t_fdf;
+
 typedef struct			s_dot
 {
 	/*
@@ -56,7 +59,13 @@ typedef struct			s_dot
 	int					color;
 }						t_dot;
 
-typedef struct			s_fdf
+struct					s_tab
+{
+	int					key;
+	int					(*ft)(t_fdf *);
+};
+
+struct					s_fdf
 {
 	/*
 	 * arg
@@ -92,7 +101,11 @@ typedef struct			s_fdf
 	t_vect				*unit0;
 	t_vect				*plan0;
 	t_vect				*user0;
-}						t_fdf;
+	/*
+	 * tab
+	 */
+	t_tab				ev[12];
+};
 
 /*
  * parser.c
@@ -116,6 +129,7 @@ int			draw_grid(t_fdf *fdf);
 /*
  * init.c
  */
+int			init_tab(t_fdf *fdf);
 int			init_fdf(t_fdf *fdf);
 int			init_mlx(t_fdf *fdf);
 int			free_fdf(t_fdf **fdf);
