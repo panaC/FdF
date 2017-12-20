@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 19:33:37 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 19:37:06 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,4 @@ t_dot		*dot_new(t_vect *s1, t_vect *s2, t_vect *pos, int color)
 	dot->color	= color;
 	ft_memdel((void**)&pos);
 	return (dot);
-
 }
