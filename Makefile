@@ -6,7 +6,7 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2017/12/20 12:20:41 by pierre           ###   ########.fr        #
+#    Updated: 2017/12/20 18:21:50 by pierre           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,15 @@ LIB= libft
 CFLAGS= -I$(INC) -Iminilibx/ -Ilibft/includes
 NAME= fdf
 SRC_DIR = src/
-SRC_FILE = main.c draw.c parser.c it.c init.c calcul.c arg.c
+SRC_FILE = main.c \
+		   draw.c \
+		   parser.c \
+		   it.c init.c \
+		   calcul.c \
+		   arg.c \
+		   calc_rot.c \
+		   calc_tr.c \
+		   calc_size.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 OBJ = $(SRC:.c=.o)
 

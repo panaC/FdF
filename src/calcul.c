@@ -6,15 +6,14 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 10:04:19 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:16:51 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 18:22:56 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fdf.h"
 #include <matrix.h>
-
-#include <stdio.h>
+#include <math.h>
 
 int				calc_matrix_init(t_fdf *fdf)
 {

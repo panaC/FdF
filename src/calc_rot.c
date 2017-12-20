@@ -6,13 +6,14 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:09:52 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:10:41 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 18:22:21 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-#include "fdf.h"
 #include <matrix.h>
+#include <math.h>
+#include "fdf.h"
 
 int				calc_matrix_left(t_fdf *fdf)
 {
