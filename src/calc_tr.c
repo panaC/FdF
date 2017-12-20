@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:12:13 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:13:38 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 18:54:29 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,10 @@
 int				trans_up(t_fdf *fdf)
 {
 	t_matrix	*m;
-	int			i;
 
 	m = ft_mtx_new();
 	m->ty = MOVE_TRANS;
-	i = 0;
-	while (i < (fdf->col * fdf->row))
-	{
-		fdf->grid[i]->dot3 = ft_mtx_mul_vec(fdf->grid[i]->dot3, m);
-		i++;
-	}
+	calc_foreach(fdf, &m);
 	expose_win(fdf);
 	return (TRUE);
 }
@@ -34,16 +28,10 @@ int				trans_up(t_fdf *fdf)
 int				trans_down(t_fdf *fdf)
 {
 	t_matrix	*m;
-	int			i;
 
 	m = ft_mtx_new();
-	m->ty = - MOVE_TRANS;
-	i = 0;
-	while (i < (fdf->col * fdf->row))
-	{
-		fdf->grid[i]->dot3 = ft_mtx_mul_vec(fdf->grid[i]->dot3, m);
-		i++;
-	}
+	m->ty = -MOVE_TRANS;
+	calc_foreach(fdf, &m);
 	expose_win(fdf);
 	return (TRUE);
 }
@@ -51,16 +39,10 @@ int				trans_down(t_fdf *fdf)
 int				trans_right(t_fdf *fdf)
 {
 	t_matrix	*m;
-	int			i;
 
 	m = ft_mtx_new();
 	m->tx = MOVE_TRANS;
-	i = 0;
-	while (i < (fdf->col * fdf->row))
-	{
-		fdf->grid[i]->dot3 = ft_mtx_mul_vec(fdf->grid[i]->dot3, m);
-		i++;
-	}
+	calc_foreach(fdf, &m);
 	expose_win(fdf);
 	return (TRUE);
 }
@@ -68,16 +50,10 @@ int				trans_right(t_fdf *fdf)
 int				trans_left(t_fdf *fdf)
 {
 	t_matrix	*m;
-	int			i;
 
 	m = ft_mtx_new();
-	m->tx = - MOVE_TRANS;
-	i = 0;
-	while (i < (fdf->col * fdf->row))
-	{
-		fdf->grid[i]->dot3 = ft_mtx_mul_vec(fdf->grid[i]->dot3, m);
-		i++;
-	}
+	m->tx = -MOVE_TRANS;
+	calc_foreach(fdf, &m);
 	expose_win(fdf);
 	return (TRUE);
 }

@@ -6,14 +6,15 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:18:10 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 18:47:24 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _FDF_H
 # define _FDF_H
 
-#include "vector.h"
+#include <vector.h>
+#include <matrix.h>
 #include <arg.h>
 
 # define				D_PLAN			400
@@ -124,6 +125,7 @@ t_dot		*dot_new(t_vect *s1, t_vect *s2, t_vect *pos, int color);
  */
 int			calc_matrix_init(t_fdf *fdf);
 t_vect		*calc_3d_projection(t_fdf *fdf);
+void		calc_foreach(t_fdf *fdf, t_matrix **m);
 /*
  * calc_rot.c
  */

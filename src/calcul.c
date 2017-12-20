@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 10:04:19 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:22:56 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 18:49:20 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,22 @@
 #include <matrix.h>
 #include <math.h>
 
+static int		calc_matrix_init_rot(t_fdf *fdf)
+{
+	t_matrix	*m;
+
+	m = ft_mtx_new();
+	m->yy = cos(PI / 6.0);
+	m->yz = sin(PI / 6.0);
+	m->zy = - sin(PI / 6.0);
+	m->zz = cos(PI / 6.0);
+	calc_foreach(fdf, &m);
+	return (TRUE);
+}
+
 int				calc_matrix_init(t_fdf *fdf)
 {
 	t_matrix	*m;
-	int			i;
 
 	m = ft_mtx_new();
 	m->xx = fdf->coef_gap_vector;
@@ -26,24 +38,22 @@ int				calc_matrix_init(t_fdf *fdf)
 	m->zz = fdf->coef_top;
 	m->tx = (int)(fdf->center->x - ((fdf->col / 2) * fdf->coef_gap_vector));
 	m->ty = (int)(fdf->center->y - ((fdf->row / 2) * fdf->coef_gap_vector));
-	i = 0;
-	while (i < (fdf->col * fdf->row))
-	{
-		fdf->grid[i]->dot3 = ft_mtx_mul_vec(fdf->grid[i]->dot3, m);
-		i++;
-	}
-	m = ft_mtx_identity(m);
-	m->yy *= cos(PI / 6.0);
-	m->yz = sin(PI / 6.0);
-	m->zy = - sin(PI / 6.0);
-	m->zz *= cos(PI / 6.0);
-	i = 0;
-	while (i < (fdf->col * fdf->row))
-	{
-		fdf->grid[i]->dot3 = ft_mtx_mul_vec(fdf->grid[i]->dot3, m);
-		i++;
-	}
+	calc_foreach(fdf, &m);
+	calc_matrix_init_rot(fdf);
 	return (TRUE);
+}
+
+void			calc_foreach(t_fdf *fdf, t_matrix **m)
+{
+	int			i;
+
+	i = 0;
+	while (i < (fdf->col * fdf->row))
+	{
+		fdf->grid[i]->dot3 = ft_mtx_mul_vec(fdf->grid[i]->dot3, *m);
+		i++;
+	}
+	ft_memdel((void**)m);
 }
 
 t_vect			*calc_3d_projection(t_fdf *fdf)
