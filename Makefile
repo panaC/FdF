@@ -6,7 +6,7 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2017/12/19 13:54:23 by pierre           ###   ########.fr        #
+#    Updated: 2017/12/20 12:20:41 by pierre           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,19 +17,22 @@ DOCP=do_cp
 INCLIB=$(INC)/../lib
 
 CC=gcc
-
+LIB= libft
 CFLAGS= -I$(INC) -Iminilibx/ -Ilibft/includes
-NAME= mlx-test
-SRC = main.c vector.c matrix.c draw.c parser.c it.c init.c calcul.c arg.c
+NAME= fdf
+SRC_DIR = src/
+SRC_FILE = main.c draw.c parser.c it.c init.c calcul.c arg.c
+SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 OBJ = $(SRC:.c=.o)
 
-all	:$(NAME)
+all		: $(LIB) $(NAME)
 
-$(NAME)	:$(OBJ)
+$(NAME)	: $(OBJ)
+	make -C $(LIB)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) -Lminilibx/ -lmlx -L$(INCLIB) -lXext -lX11 -lm -Llibft/ -lft
 
 clean	:
 	rm -f $(NAME) $(OBJ) *~ core *.core
+	make -C libft/ fclean
 
-
-re	: clean all
+re		: clean all
