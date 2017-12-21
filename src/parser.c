@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 19:33:20 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/21 00:33:32 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 #include <sys/types.h> 
 #include <unistd.h>
 #include <get_next_line.h>
+#include <stdlib.h>
 #include "fdf.h"
-
-#include <stdio.h>
 
 int			check_dim_grid(t_fdf *a)
 {
@@ -33,18 +32,22 @@ int			check_dim_grid(t_fdf *a)
 	if (!get_next_line(fd, &line))
 		return (FALSE);
 	col = ft_nb_split(line, ' ');
+	ft_memdel((void**)&(line));
 	while (get_next_line(fd, &line))
 	{
 		if (col != ft_nb_split(line, ' '))
 			return (FALSE);
+		ft_memdel((void**)&(line));
 		row++;
 	}
 	a->row = row;
 	a->col = col;
 	lseek(fd, 0, SEEK_SET);
 	close(fd);
+	ft_memdel((void**)&(line));
 	return ((row == 0 || col == 0) ? FALSE : TRUE);
 }
+
 
 int			fill_grid_vector(t_fdf *a, int fd)
 {
@@ -60,10 +63,14 @@ int			fill_grid_vector(t_fdf *a, int fd)
 		while (line_row[x] != NULL)
 		{
 			set_vector(a, x, y, ft_atoi(line_row[x]));
+			ft_memdel((void**)&(line_row[x]));
 			x++;
 		}
+		free(line_row);
+		ft_memdel((void**)&(line));
 		y++;
 	}
+	ft_memdel((void**)&(line));
 	return (TRUE);
 }
 

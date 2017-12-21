@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:03:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 19:30:06 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/21 00:40:18 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int			key_win(int key, t_fdf *fdf)
 	i = 0;
 	if (key == K_ESCAPE)
 	{
+		mlx_destroy_window(fdf->mlx, fdf->win);
 		free_fdf(&fdf);
 		exit(0);
 	}

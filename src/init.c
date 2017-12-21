@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 19:37:06 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/21 01:12:54 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,22 @@ int			init_mlx(t_fdf *fdf)
 int			free_fdf(t_fdf **fdf)
 {
 	t_fdf	*fd;
+	int		i;
 
 	fd = *fdf;
+	ft_freearg(&(fd->arg));
+	ft_memdel((void**)&(fd->mlx));
+	ft_memdel((void**)&(fd->center));
 	ft_memdel((void**)&(fd->title));
 	ft_memdel((void**)&(fd->file));
+	i = 0;
+	while (i < (fd->col * fd->row))
+	{
+		ft_memdel((void**)&(fd->grid[i]->dot3));
+		ft_memdel((void**)&(fd->grid[i]->dot2));
+		ft_memdel((void**)&(fd->grid[i]));
+		i++;
+	}
 	ft_memdel((void**)&(fd->grid));
 	ft_memdel((void**)&(fd->unit0));
 	ft_memdel((void**)&(fd->plan0));

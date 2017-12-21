@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 10:04:19 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:49:20 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/20 22:53:03 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_vect			*calc_3d_projection(t_fdf *fdf)
 		tmp += (double)fdf->center->y;
 		ret->y = (int)tmp;
 		ret->z = fdf->plan0->z;
+		ft_memdel((void**)&(fdf->grid[i]->dot2));
 		fdf->grid[i]->dot2 = ret;
 		i++;
 	}
