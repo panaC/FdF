@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/21 15:22:27 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/21 16:57:47 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int			init_fdf(t_fdf *fdf)
 	ft_setparam_int(fdf->arg, "coef-top", &(fdf->coef_top), COEF_PEAK);
 	ft_setparam_int(fdf->arg, "d-plan", &(fdf->d_plan), D_PLAN);
 	ft_setparam_int(fdf->arg, "d-user", &(fdf->d_user), D_USER);
-	ft_setparam_hex(fdf->arg, "color", &(fdf->color), 0xFF);
+	ft_setparam_hex(fdf->arg, "color", &(fdf->color), 0xFFFFFFF);
 	ft_setparam_doubleint(fdf->arg, "size-win", &(fdf->size_win_x), SIZE_X, 0);
 	ft_setparam_doubleint(fdf->arg, "size-win", &(fdf->size_win_y), SIZE_Y, 1);
 	fdf->title = ft_strnew(50);

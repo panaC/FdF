@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/21 16:45:06 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/21 16:58:02 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int			set_vector(t_fdf *a, int x, int y, int z)
 	t_dot		*dot;
 
 	dot = dot_new(ft_vect_new(x, y, z), ft_vect_new(0, 0, 0),
-			ft_vect_new(x, y, 0), a->color + z * a->coef_top * 1000);
+			ft_vect_new(x, y, 0), a->color + z * a->coef_top * 100);
 	a->grid[(y * a->col) + x] = dot;
 	return (TRUE);
 }
