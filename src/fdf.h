@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 19:32:00 by pierre           ###   ########.fr       */
+/*   Updated: 2017/12/21 16:01:47 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int			expose_win(t_fdf *fdf);
 /*
  * draw.c
  */
-void		line(t_fdf *a, t_vect *s, t_vect *e, int color);
+void		line(t_fdf *a, t_vect *s, t_vect *e, int color_s, int color_e);
 int			draw_line(t_fdf *a, t_vect *s1, t_vect *s2, int color);
 int			draw_grid(t_fdf *fdf);
 /*
