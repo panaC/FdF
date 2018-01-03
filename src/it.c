@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:03:18 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 14:22:25 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/03 19:17:10 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,3 @@ int			key_win(int key, t_fdf *fdf)
 	}
 	return (TRUE);
 }
-
-/*int			mouse_win(int x, int y, t_fdf *fdf)
-{
-	static int		xx = 300;
-	static int		yy = 200;
-
-	if (x <= xx)
-		printf("left\n");
-	else
-		printf("right\n");
-	if (y <= yy)
-		printf("up\n");
-	else
-		printf("down\n");
-	xx = x;
-	yy = y;
-}*/

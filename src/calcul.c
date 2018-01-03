@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 10:04:19 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 14:16:51 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/03 18:46:23 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		calc_matrix_init_rot(t_fdf *fdf)
 	m = ft_mtx_new();
 	m->yy = cos(PI / 6.0);
 	m->yz = sin(PI / 6.0);
-	m->zy = - sin(PI / 6.0);
+	m->zy = -sin(PI / 6.0);
 	m->zz = cos(PI / 6.0);
 	calc_foreach(fdf, &m);
 	return (TRUE);

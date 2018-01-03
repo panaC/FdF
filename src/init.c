@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 14:18:57 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/03 19:16:47 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ int			init_fdf(t_fdf *fdf)
 	return (TRUE);
 }
 
+/*
+** mlx_hook(fdf->win, MotionNotify, PointerMotionMask, mouse_win, fdf);
+*/
+
 int			init_mlx(t_fdf *fdf)
 {
 	fdf->mlx = mlx_init();
@@ -82,9 +86,6 @@ int			init_mlx(t_fdf *fdf)
 		return (FALSE);
 	fdf->win = mlx_new_window(fdf->mlx, fdf->size_win_x, fdf->size_win_y,
 			fdf->title);
-	/*
-	 * mlx_hook(fdf->win, MotionNotify, PointerMotionMask, mouse_win, fdf);
-	 */
 	mlx_expose_hook(fdf->win, expose_win, fdf);
 	mlx_key_hook(fdf->win, key_win, fdf);
 	return (TRUE);
@@ -123,11 +124,11 @@ t_dot		*dot_new(t_vect *s1, t_vect *s2, t_vect *pos, int color)
 
 	if ((!(dot = ft_memalloc(sizeof(*dot)))))
 		return (NULL);
-	dot->dot2	= s2;
-	dot->dot3	= s1;
-	dot->x		= pos->x;
-	dot->y		= pos->y;
-	dot->color	= color;
+	dot->dot2 = s2;
+	dot->dot3 = s1;
+	dot->x = pos->x;
+	dot->y = pos->y;
+	dot->color = color;
 	ft_memdel((void**)&pos);
 	return (dot);
 }

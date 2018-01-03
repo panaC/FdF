@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:15:23 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:50:54 by pierre           ###   ########.fr       */
+/*   Updated: 2018/01/03 18:45:51 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int				trans_min(t_fdf *fdf)
 	t_matrix	*m;
 
 	m = ft_mtx_new();
-	m->tz = - MOVE_TRANS;
+	m->tz = -MOVE_TRANS;
 	calc_foreach(fdf, &m);
 	expose_win(fdf);
 	return (TRUE);

@@ -6,14 +6,14 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 13:05:47 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/03 19:23:56 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <vector.h>
 #include <fcntl.h>
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <unistd.h>
 #include <get_next_line.h>
 #include <stdlib.h>
@@ -47,7 +47,6 @@ int			check_dim_grid(t_fdf *a)
 	ft_memdel((void**)&(line));
 	return ((row == 0 || col == 0) ? FALSE : TRUE);
 }
-
 
 int			fill_grid_vector(t_fdf *a, int fd)
 {
@@ -98,7 +97,9 @@ int			fill_vector(t_fdf *a)
 		return (FALSE);
 	if (((fd = open(a->file, O_RDONLY)) < 0))
 		return (FALSE);
-//	sleep(0.01);
+#ifdef __linux__
+	sleep(0.01);
+#endif
 	if (!fill_grid_vector(a, fd))
 		return (FALSE);
 	close(fd);
