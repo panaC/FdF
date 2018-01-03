@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/21 16:58:02 by pierre           ###   ########.fr       */
+/*   Updated: 2018/01/03 13:05:47 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int			fill_grid_vector(t_fdf *a, int fd)
 	char		*line;
 	char		**line_row;
 
+	y = 0;
 	while (get_next_line(fd, &line))
 	{
 		x = 0;
@@ -97,7 +98,7 @@ int			fill_vector(t_fdf *a)
 		return (FALSE);
 	if (((fd = open(a->file, O_RDONLY)) < 0))
 		return (FALSE);
-	sleep(0.01);
+//	sleep(0.01);
 	if (!fill_grid_vector(a, fd))
 		return (FALSE);
 	close(fd);

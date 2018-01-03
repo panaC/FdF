@@ -6,12 +6,14 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/21 16:57:47 by pierre           ###   ########.fr       */
+/*   Updated: 2018/01/03 14:18:57 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
-#include <mlx_int.h>
+#ifdef __linux__
+# include <mlx_int.h>
+#endif
 #include <libft.h>
 #include <vector.h>
 #include "fdf.h"
@@ -28,21 +30,21 @@ int			init_tab(t_fdf *fdf)
 	(fdf->ev[2]).ft = calc_matrix_up;
 	(fdf->ev[3]).key = K_DOWN;
 	(fdf->ev[3]).ft = calc_matrix_down;
-	(fdf->ev[4]).key = 'k';
+	(fdf->ev[4]).key = K_K;
 	(fdf->ev[4]).ft = trans_up;
-	(fdf->ev[5]).key = 'j';
+	(fdf->ev[5]).key = K_J;
 	(fdf->ev[5]).ft = trans_down;
-	(fdf->ev[6]).key = 'h';
+	(fdf->ev[6]).key = K_H;
 	(fdf->ev[6]).ft = trans_left;
-	(fdf->ev[7]).key = 'l';
+	(fdf->ev[7]).key = K_L;
 	(fdf->ev[7]).ft = trans_right;
-	(fdf->ev[8]).key = 'a';
+	(fdf->ev[8]).key = K_A;
 	(fdf->ev[8]).ft = trans_max;
-	(fdf->ev[9]).key = 'z';
+	(fdf->ev[9]).key = K_Z;
 	(fdf->ev[9]).ft = trans_min;
-	(fdf->ev[10]).key = 's';
+	(fdf->ev[10]).key = K_S;
 	(fdf->ev[10]).ft = peak_up;
-	(fdf->ev[11]).key = 'x';
+	(fdf->ev[11]).key = K_X;
 	(fdf->ev[11]).ft = peak_down;
 	return (TRUE);
 }

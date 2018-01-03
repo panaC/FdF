@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/21 16:01:47 by pierre           ###   ########.fr       */
+/*   Updated: 2018/01/03 14:13:08 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,37 @@
 # define				SIZE_X			600
 # define				SIZE_Y			400
 
-# define				K_ESCAPE		65307
-# define				K_LEFT			65361
-# define				K_UP			65362
-# define				K_RIGHT			65363
-# define				K_DOWN			65364
+# ifdef __linux__
+#  define				K_ESCAPE		65307
+#  define				K_LEFT			65361
+#  define				K_UP			65362
+#  define				K_RIGHT			65363
+#  define				K_DOWN			65364
+#  define				K_A				'a'
+#  define				K_Z				'z'
+#  define				K_S				's'
+#  define				K_X				'x'
+#  define				K_H				'h'
+#  define				K_J				'j'
+#  define				K_K				'k'
+#  define				K_L				'l'
+# endif
+# ifdef __APPLE__
+#  define				K_ESCAPE		53
+#  define				K_LEFT			123
+#  define				K_UP			126
+#  define				K_RIGHT			124
+#  define				K_DOWN			125
+#  define				K_A				0
+#  define				K_Z				6
+#  define				K_S				1
+#  define				K_X				7
+#  define				K_H				4
+#  define				K_J				38
+#  define				K_K				40
+#  define				K_L				37
+# endif
+
 
 # define				PI				3.14159265358979323846
 
