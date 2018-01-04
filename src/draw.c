@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 09:54:09 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 18:55:07 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/04 13:57:48 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	line1(t_fdf *fdf, t_vect *s, int dx, int dy, int *c)
 			cumul -= dx;
 			cor[1] += inc[1];
 		}
-		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], c[0] + (ft_abs(c[0] - c[1]) / dx));
+		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], c[0]);
 		++i;
 	}
 }
@@ -69,7 +69,7 @@ static void	line2(t_fdf *fdf, t_vect *s, int dx, int dy, int *c)
 			cumul -= dy;
 			cor[0] += inc[0];
 		}
-		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], c[0] + (ft_abs(c[0] - c[1]) / dy));
+		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], c[0]);
 		++i;
 	}
 }

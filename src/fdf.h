@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 19:14:59 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/04 14:32:34 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ struct					s_fdf
 */
 int						check_dim_grid(t_fdf *a);
 int						fill_vector(t_fdf *a);
-int						set_vector(t_fdf *a, int x, int y, int z);
 int						fill_grid_vector(t_fdf *a, int fd);
 /*
 ** it.c
@@ -179,5 +178,9 @@ int						peak_up(t_fdf *fdf);
 ** arg.c
 */
 t_bool					check_arg(t_fdf *fdf, int ac, char **av);
+/*
+** color.c
+*/
+int						get_color(t_fdf *fdf, char *str);
 
 #endif

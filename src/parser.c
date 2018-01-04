@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 19:23:56 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/04 14:39:20 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ int			fill_grid_vector(t_fdf *a, int fd)
 		line_row = ft_strsplit(line, ' ');
 		while (line_row[x] != NULL)
 		{
-			set_vector(a, x, y, ft_atoi(line_row[x]));
+			a->grid[(y * a->col) + x] = dot_new(ft_vect_new(x, y,
+						ft_atoi(line_row[x])),
+				ft_vect_new(0, 0, 0), ft_vect_new(x, y, 0),
+				get_color(a, line_row[x]));
 			ft_memdel((void**)&(line_row[x]));
 			x++;
 		}
@@ -71,16 +74,6 @@ int			fill_grid_vector(t_fdf *a, int fd)
 		y++;
 	}
 	ft_memdel((void**)&(line));
-	return (TRUE);
-}
-
-int			set_vector(t_fdf *a, int x, int y, int z)
-{
-	t_dot		*dot;
-
-	dot = dot_new(ft_vect_new(x, y, z), ft_vect_new(0, 0, 0),
-			ft_vect_new(x, y, 0), a->color + z * a->coef_top * 100);
-	a->grid[(y * a->col) + x] = dot;
 	return (TRUE);
 }
 
