@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/04 21:00:55 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/04 22:14:11 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <get_next_line.h>
 #include <stdlib.h>
 #include "fdf.h"
+#include <stdio.h>
 
 int			check_dim_grid(t_fdf *a)
 {
@@ -72,6 +73,8 @@ int			fill_grid_vector(t_fdf *a, int fd)
 		ft_memdel((void**)&(line));
 		y++;
 	}
+	a->size_map = x;
+	printf("%d\n", a->d_plan);
 	ft_memdel((void**)&(line));
 	return (TRUE);
 }
