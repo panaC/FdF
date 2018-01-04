@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 09:54:09 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/04 13:57:48 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/04 15:53:30 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "fdf.h"
 #include "vector.h"
 
-static void	line1(t_fdf *fdf, t_vect *s, int dx, int dy, int *c)
+static void	line1(t_fdf *fdf, t_vect *s, int dx, int dy, t_uint32 *c)
 {
 	int		cumul;
 	int		i;
@@ -40,12 +40,12 @@ static void	line1(t_fdf *fdf, t_vect *s, int dx, int dy, int *c)
 			cumul -= dx;
 			cor[1] += inc[1];
 		}
-		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], c[0]);
+		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], col_deg(c, i));
 		++i;
 	}
 }
 
-static void	line2(t_fdf *fdf, t_vect *s, int dx, int dy, int *c)
+static void	line2(t_fdf *fdf, t_vect *s, int dx, int dy, t_uint32 *c)
 {
 	int		cumul;
 	int		i;
@@ -69,26 +69,31 @@ static void	line2(t_fdf *fdf, t_vect *s, int dx, int dy, int *c)
 			cumul -= dy;
 			cor[0] += inc[0];
 		}
-		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], c[0]);
+		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], col_deg(c, i));
 		++i;
 	}
 }
 
-void		line(t_fdf *fdf, t_vect *s, t_vect *e, int color_s, int color_e)
+void		line(t_fdf *fdf, t_dot *s, t_dot *e)
 {
-	int		dx;
-	int		dy;
-	int		color_tab[2];
+	int			dx;
+	int			dy;
+	t_uint32	*color_tab;
 
-	color_tab[0] = color_s;
-	color_tab[1] = color_e;
-	dx = e->x - s->x;
-	dy = e->y - s->y;
-	mlx_pixel_put(fdf->mlx, fdf->win, s->x, s->y, color_s);
+	dx = e->dot2->x - s->dot2->x;
+	dy = e->dot2->y - s->dot2->y;
+	mlx_pixel_put(fdf->mlx, fdf->win, s->dot2->x, s->dot2->y, s->color);
 	if (ft_abs(dx) > ft_abs(dy))
-		line1(fdf, s, dx, dy, color_tab);
+	{
+		color_tab = set_tab_col_deg(s->color, e->color, dx);
+		line1(fdf, s->dot2, dx, dy, color_tab);
+	}
 	else
-		line2(fdf, s, dx, dy, color_tab);
+	{
+		color_tab = set_tab_col_deg(s->color, e->color, dy);
+		line2(fdf, s->dot2, dx, dy, color_tab);
+	}
+	ft_memdel((void**)&(color_tab));
 }
 
 /*
@@ -121,17 +126,13 @@ int			draw_grid(t_fdf *fdf)
 		{
 			if (i < (fdf->col - 1))
 			{
-				line(fdf, fdf->grid[(j * fdf->col) + i]->dot2,
-						fdf->grid[(j * fdf->col) + i + 1]->dot2,
-						fdf->grid[(j * fdf->col) + i]->color,
-						fdf->grid[(j * fdf->col) + i + 1]->color);
+				line(fdf, fdf->grid[(j * fdf->col) + i],
+						fdf->grid[(j * fdf->col) + i + 1]);
 			}
 			if (j < (fdf->row - 1))
 			{
-				line(fdf, fdf->grid[(j * fdf->col) + i]->dot2,
-						fdf->grid[((j + 1) * fdf->col) + i]->dot2,
-						fdf->grid[(j * fdf->col) + i]->color,
-						fdf->grid[((j + 1) * fdf->col) + i]->color);
+				line(fdf, fdf->grid[(j * fdf->col) + i],
+						fdf->grid[((j + 1) * fdf->col) + i]);
 			}
 			i++;
 		}

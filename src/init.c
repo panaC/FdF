@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 19:16:47 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/04 16:28:25 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int			free_fdf(t_fdf **fdf)
 	return (TRUE);
 }
 
-t_dot		*dot_new(t_vect *s1, t_vect *s2, t_vect *pos, int color)
+t_dot		*dot_new(t_vect *s1, t_vect *s2, t_vect *pos, t_uint32 color)
 {
 	t_dot	*dot;
 

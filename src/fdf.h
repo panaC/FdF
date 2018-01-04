@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/04 14:32:34 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/04 16:33:20 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct			s_dot
 	t_vect				*dot2;
 	int					x;
 	int					y;
-	int					color;
+	t_uint32			color;
 }						t_dot;
 
 /*
@@ -111,7 +111,7 @@ struct					s_fdf
 	int					coef_top;
 	int					d_plan;
 	int					d_user;
-	int					color;
+	t_uint32			color;
 	t_dot				**grid;
 	t_vect				*unit0;
 	t_vect				*plan0;
@@ -134,8 +134,7 @@ int						expose_win(t_fdf *fdf);
 /*
 ** draw.c
 */
-void					line(t_fdf *a, t_vect *s, t_vect *e, int color_s,
-		int color_e);
+void					line(t_fdf *fdf, t_dot *s, t_dot *e);
 int						draw_line(t_fdf *a, t_vect *s1, t_vect *s2, int color);
 int						draw_grid(t_fdf *fdf);
 /*
@@ -146,7 +145,7 @@ int						init_fdf(t_fdf *fdf);
 int						init_mlx(t_fdf *fdf);
 int						free_fdf(t_fdf **fdf);
 t_dot					*dot_new(t_vect *s1, t_vect *s2, t_vect *pos,
-		int color);
+		t_uint32 color);
 /*
 ** calcul.c
 */
@@ -181,6 +180,8 @@ t_bool					check_arg(t_fdf *fdf, int ac, char **av);
 /*
 ** color.c
 */
-int						get_color(t_fdf *fdf, char *str);
+t_uint32				get_color(t_fdf *fdf, char *str);
+t_uint32				*set_tab_col_deg(t_uint32 sc, t_uint32 ec, int d);
+t_uint32				col_deg(t_uint32 *tab, int i);
 
 #endif
