@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 15:15:10 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/04 22:14:11 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/09 10:43:50 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <get_next_line.h>
 #include <stdlib.h>
 #include "fdf.h"
-#include <stdio.h>
 
 int			check_dim_grid(t_fdf *a)
 {
@@ -63,7 +62,7 @@ int			fill_grid_vector(t_fdf *a, int fd)
 		line_row = ft_strsplit(line, ' ');
 		while (line_row[x] != NULL)
 		{
-			a->grid[(y * a->col) + x] = dot_new(ft_vect_new(x, y, 
+			a->grid[(y * a->col) + x] = dot_new(ft_vect_new(x, y,
 						ft_atoi(line_row[x])), ft_vect_new(0, 0, 0),
 					ft_vect_new(x, y, 0), get_color(a, line_row[x]));
 			ft_memdel((void**)&(line_row[x]));
@@ -73,8 +72,6 @@ int			fill_grid_vector(t_fdf *a, int fd)
 		ft_memdel((void**)&(line));
 		y++;
 	}
-	a->size_map = x;
-	printf("%d\n", a->d_plan);
 	ft_memdel((void**)&(line));
 	return (TRUE);
 }
@@ -92,9 +89,6 @@ int			fill_vector(t_fdf *a)
 		return (FALSE);
 	if (((fd = open(a->file, O_RDONLY)) < 0))
 		return (FALSE);
-#ifdef __linux__
-	sleep(0.01);
-#endif
 	if (!fill_grid_vector(a, fd))
 		return (FALSE);
 	close(fd);
