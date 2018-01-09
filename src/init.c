@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/09 11:41:33 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/09 20:21:05 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int			init_tab(t_fdf *fdf)
 
 int			init_fdf(t_fdf *fdf)
 {
+	fdf->is_color = ft_check_shortparam(fdf->arg->short_param, 'c');
 	ft_setparam_int(fdf->arg, "coef-gap", &(fdf->coef_gap_vector), COEF_GAP);
 	ft_setparam_int(fdf->arg, "coef-top", &(fdf->coef_top), COEF_PEAK);
 	ft_setparam_int(fdf->arg, "d-plan", &(fdf->d_plan), D_PLAN);

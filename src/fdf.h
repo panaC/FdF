@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/09 10:27:31 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/09 19:59:47 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ struct					s_fdf
 	t_vect				*plan0;
 	t_vect				*user0;
 	t_tab				ev[12];
+	t_bool				is_color;
 };
 
 /*

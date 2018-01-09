@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:43:55 by pierre            #+#    #+#             */
-/*   Updated: 2017/12/20 18:18:20 by pierre           ###   ########.fr       */
+/*   Updated: 2018/01/09 20:21:35 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,30 @@ static t_bool		error_arg(t_string s)
 	return (FALSE);
 }
 
+static t_list		*set_arg(void)
+{
+	t_list			*lst;
+
+	ft_lstaddstr(&lst, "coef-gap");
+	ft_lstaddstr(&lst, "coef-top");
+	ft_lstaddstr(&lst, "d-plan");
+	ft_lstaddstr(&lst, "d-user");
+	ft_lstaddstr(&lst, "color");
+	ft_lstaddstr(&lst, "size-win");
+	ft_lstaddstr(&lst, "help");
+	return (lst);
+}
+
 t_bool				check_arg(t_fdf *fdf, int ac, char **av)
 {
 	if ((!(fdf->arg = ft_get_arg(ac, av))))
 		return (FALSE);
-	if (!fdf->arg->state || ft_lstlen(fdf->arg->data_param) != 1)
+	if (!fdf->arg->state || ft_lstlen(fdf->arg->data_param) != 1 ||
+			!ft_check_longparam(fdf->arg->long_param, set_arg(), TRUE) ||
+			!(ft_check_shortparam(fdf->arg->short_param, 'c') &&
+				(ft_strlen(fdf->arg->short_param) < 2)))
 		return (error_arg(av[0]));
-	if (ft_lststrfind(fdf->arg->long_param, NULL, "help"))
-	{
-		error_arg(av[0]);
-		return (FALSE);
-	}
+	if (ft_search_param(fdf->arg->long_param, NULL, "help"))
+		return (error_arg(av[0]));
 	return (TRUE);
 }
