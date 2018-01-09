@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 09:54:09 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/04 15:53:30 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/09 12:05:13 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "fdf.h"
 #include "vector.h"
 
-static void	line1(t_fdf *fdf, t_vect *s, int dx, int dy, t_uint32 *c)
+static void	line1(t_fdf *fdf, t_vect *s, int *d, t_uint32 *c)
 {
 	int		cumul;
 	int		i;
@@ -25,19 +25,19 @@ static void	line1(t_fdf *fdf, t_vect *s, int dx, int dy, t_uint32 *c)
 
 	cor[0] = s->x;
 	cor[1] = s->y;
-	inc[0] = (dx > 0) ? 1 : -1;
-	inc[1] = (dy > 0) ? 1 : -1;
-	dx = ft_abs(dx);
-	dy = ft_abs(dy);
-	cumul = dx / 2;
+	inc[0] = (d[0] > 0) ? 1 : -1;
+	inc[1] = (d[1] > 0) ? 1 : -1;
+	d[0] = ft_abs(d[0]);
+	d[1] = ft_abs(d[1]);
+	cumul = d[0] / 2;
 	i = 1;
-	while (i <= dx)
+	while (i <= d[0])
 	{
 		cor[0] += inc[0];
-		cumul += dy;
-		if (cumul >= dx)
+		cumul += d[1];
+		if (cumul >= d[0])
 		{
-			cumul -= dx;
+			cumul -= d[0];
 			cor[1] += inc[1];
 		}
 		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], col_deg(c, i));
@@ -45,7 +45,7 @@ static void	line1(t_fdf *fdf, t_vect *s, int dx, int dy, t_uint32 *c)
 	}
 }
 
-static void	line2(t_fdf *fdf, t_vect *s, int dx, int dy, t_uint32 *c)
+static void	line2(t_fdf *fdf, t_vect *s, int *d, t_uint32 *c)
 {
 	int		cumul;
 	int		i;
@@ -54,19 +54,19 @@ static void	line2(t_fdf *fdf, t_vect *s, int dx, int dy, t_uint32 *c)
 
 	cor[0] = s->x;
 	cor[1] = s->y;
-	inc[0] = (dx > 0) ? 1 : -1;
-	inc[1] = (dy > 0) ? 1 : -1;
-	dx = ft_abs(dx);
-	dy = ft_abs(dy);
-	cumul = dy / 2;
+	inc[0] = (d[0] > 0) ? 1 : -1;
+	inc[1] = (d[1] > 0) ? 1 : -1;
+	d[0] = ft_abs(d[0]);
+	d[1] = ft_abs(d[1]);
+	cumul = d[1] / 2;
 	i = 1;
-	while (i <= dy)
+	while (i <= d[1])
 	{
 		cor[1] += inc[1];
-		cumul += dx;
-		if (cumul >= dy)
+		cumul += d[0];
+		if (cumul >= d[1])
 		{
-			cumul -= dy;
+			cumul -= d[1];
 			cor[0] += inc[0];
 		}
 		mlx_pixel_put(fdf->mlx, fdf->win, cor[0], cor[1], col_deg(c, i));
@@ -76,22 +76,21 @@ static void	line2(t_fdf *fdf, t_vect *s, int dx, int dy, t_uint32 *c)
 
 void		line(t_fdf *fdf, t_dot *s, t_dot *e)
 {
-	int			dx;
-	int			dy;
+	int			d[2];
 	t_uint32	*color_tab;
 
-	dx = e->dot2->x - s->dot2->x;
-	dy = e->dot2->y - s->dot2->y;
+	d[0] = e->dot2->x - s->dot2->x;
+	d[1] = e->dot2->y - s->dot2->y;
 	mlx_pixel_put(fdf->mlx, fdf->win, s->dot2->x, s->dot2->y, s->color);
-	if (ft_abs(dx) > ft_abs(dy))
+	if (ft_abs(d[0]) > ft_abs(d[1]))
 	{
-		color_tab = set_tab_col_deg(s->color, e->color, dx);
-		line1(fdf, s->dot2, dx, dy, color_tab);
+		color_tab = set_tab_col_deg(s->color, e->color, d[0]);
+		line1(fdf, s->dot2, d, color_tab);
 	}
 	else
 	{
-		color_tab = set_tab_col_deg(s->color, e->color, dy);
-		line2(fdf, s->dot2, dx, dy, color_tab);
+		color_tab = set_tab_col_deg(s->color, e->color, d[1]);
+		line2(fdf, s->dot2, d, color_tab);
 	}
 	ft_memdel((void**)&(color_tab));
 }
