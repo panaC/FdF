@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:43:55 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/11 13:27:39 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/11 20:51:20 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static t_list		*set_arg(void)
 {
 	t_list			*lst;
 
+	lst = NULL;
 	ft_lstaddstr(&lst, "coef-gap");
 	ft_lstaddstr(&lst, "coef-top");
 	ft_lstaddstr(&lst, "d-plan");

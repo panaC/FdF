@@ -6,10 +6,12 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2018/01/11 14:52:08 by pleroux          ###   ########.fr        #
+#    Updated: 2018/01/11 22:08:23 by pleroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+DBG=-ggdb -fsanitize=address -fno-omit-frame-pointer
+DBG2=-ggdb  -fsanitize=address -fsanitize-memory-track-origins
 INC=/usr/include
 HT=Linux
 DOCP=do_cp

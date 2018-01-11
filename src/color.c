@@ -6,18 +6,19 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 11:00:22 by pleroux           #+#    #+#             */
-/*   Updated: 2018/01/11 16:46:33 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/11 21:50:06 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fdf.h"
+#include <stdlib.h>
 
 #include <stdio.h>
 
 t_uint32		get_color(t_fdf *fdf, char *str)
 {
-	char		**split;
+	t_string	*split;
 	t_uint32	ret;
 	int			i;
 	t_uint32	t;
@@ -35,8 +36,8 @@ t_uint32		get_color(t_fdf *fdf, char *str)
 		ret ^= t | (t << 8) | (t << 16);
 	}
 	while (split && split[i] != NULL)
-		ft_memdel((void**)&(split[i]));
-	ft_memdel((void**)&(split));
+		ft_memdel((void**)&(split[i++]));
+	free(split);
 	return (ret);
 }
 
