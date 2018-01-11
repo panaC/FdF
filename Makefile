@@ -6,7 +6,7 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2018/01/04 14:33:06 by pleroux          ###   ########.fr        #
+#    Updated: 2018/01/11 09:53:27 by pleroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,15 @@ CC=gcc
 LIB= libft/libft.a
 LIB_PATH = libft/
 ifeq ($(UNAME_S), Linux)
-	CFLAGS= -I$(INC) -Iminilibx/ -Ilibft/includes -Wall -Werror -Wextra
-	LIB_FLAGS= -Lminilibx/ -lmlx -L$(INCLIB) -lXext -lX11 -lm -Llibft/ -lft
+	LIB_MLX= minilibx/libmlx.a
+	LIB_MLX_PATH = minilibx/
+	CFLAGS= -I$(INC) -I$(LIB_MLX_PATH) -Ilibft/includes -Wall -Werror -Wextra
+	LIB_FLAGS= -L$(LIB_MLX_PATH) -lmlx -L$(INCLIB) -lXext -lX11 -lm -L$(LIB_PATH) -lft
 else
-	CFLAGS= -I$(INC) -Iminilibx_macos/ -Ilibft/includes -Wall -Werror -Wextra
-	LIB_FLAGS= -lm -Llibft/ -lft -Lminilibx_macos/ -lmlx -framework OpenGL -framework AppKit
+	LIB_MLX= minilibx_macos/libmlx.a
+	LIB_MLX_PATH = minilibx_macos/
+	CFLAGS= -I$(INC) -I$(LIB_MLX_PATH) -Ilibft/includes -Wall -Werror -Wextra
+	LIB_FLAGS= -lm -L$(LIB_PATH) -lft -L$(LIB_MLX_PATH) -lmlx -framework OpenGL -framework AppKit
 endif
 NAME= fdf
 SRC_DIR = src/
@@ -41,10 +45,13 @@ SRC_FILE = main.c \
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 OBJ = $(SRC:.c=.o)
 
-all		: $(LIB) $(NAME)
+all		: $(LIB) $(LIB_MLX) $(NAME)
 
 $(LIB)	:
 	make -C $(LIB_PATH)
+
+$(LIB_MLX) :
+	make -C $(LIB_MLX_PATH)
 
 $(NAME)	: $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LIB_FLAGS)
