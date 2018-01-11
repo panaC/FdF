@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 10:04:19 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 18:46:23 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/11 17:40:41 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,24 @@ t_vect			*calc_3d_projection(t_fdf *fdf)
 	{
 		v = fdf->grid[i]->dot3;
 		ret = ft_vect_new(0, 0, 0);
-		tmp = (double)((double)fdf->d_user / (double)(fdf->user0->z - v->z));
-		tmp *= (double)(v->x - fdf->center->x);
-		tmp += (double)fdf->center->x;
-		ret->x = (int)tmp;
-		tmp = (double)((double)fdf->d_user / (double)(fdf->user0->z - v->z));
-		tmp *= (double)(v->y - fdf->center->y);
-		tmp += (double)fdf->center->y;
-		ret->y = (int)tmp;
-		ret->z = fdf->plan0->z;
-		ft_memdel((void**)&(fdf->grid[i]->dot2));
+		if ((fdf->user0->z - v->z) <= 0)
+		{
+			ret->x = v->x;
+			ret->y = v->y;
+		}
+		else
+		{
+			tmp = (double)((double)fdf->d_user / (double)(fdf->user0->z - v->z));
+			tmp *= (double)(v->x - fdf->center->x);
+			tmp += (double)fdf->center->x;
+			ret->x = (int)tmp;
+			tmp = (double)((double)fdf->d_user / (double)(fdf->user0->z - v->z));
+			tmp *= (double)(v->y - fdf->center->y);
+			tmp += (double)fdf->center->y;
+			ret->y = (int)tmp;
+			ret->z = fdf->plan0->z;
+			ft_memdel((void**)&(fdf->grid[i]->dot2));
+		}
 		fdf->grid[i]->dot2 = ret;
 		i++;
 	}

@@ -6,24 +6,34 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 11:00:22 by pleroux           #+#    #+#             */
-/*   Updated: 2018/01/09 10:43:59 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/11 16:46:33 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fdf.h"
 
+#include <stdio.h>
+
 t_uint32		get_color(t_fdf *fdf, char *str)
 {
 	char		**split;
 	t_uint32	ret;
 	int			i;
+	t_uint32	t;
 
 	i = 0;
 	ret = fdf->color;
 	split = ft_strsplit(str, ',');
-	if (split && split[0] && split[1])
+	if (fdf->is_color && split && split[0] && split[1])
+	{
 		ret = ft_atoi_hex(split[1]);
+	}
+	else if (!fdf->is_color && split && split[0])
+	{
+		t = ft_atoi(split[0]) * 10;
+		ret ^= t | (t << 8) | (t << 16);
+	}
 	while (split && split[i] != NULL)
 		ft_memdel((void**)&(split[i]));
 	ft_memdel((void**)&(split));

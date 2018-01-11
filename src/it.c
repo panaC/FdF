@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:03:18 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/03 19:17:10 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/11 17:23:05 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int			key_win(int key, t_fdf *fdf)
 	{
 		mlx_destroy_window(fdf->mlx, fdf->win);
 		free_fdf(&fdf);
+		while (1)
+			;
 		exit(0);
 	}
 	while (i < 12)

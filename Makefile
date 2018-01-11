@@ -6,7 +6,7 @@
 #    By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 13:59:37 by pierre            #+#    #+#              #
-#    Updated: 2018/01/11 09:53:27 by pleroux          ###   ########.fr        #
+#    Updated: 2018/01/11 14:52:08 by pleroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRC_FILE = main.c \
 		   calc_rot.c \
 		   calc_tr.c \
 		   calc_size.c \
-		   color.c
+		   color.c \
+		   misc.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
 OBJ = $(SRC:.c=.o)
 

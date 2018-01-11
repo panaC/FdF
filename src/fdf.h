@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 10:15:18 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/09 19:59:47 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/11 14:33:57 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ struct					s_fdf
 	t_vect				*user0;
 	t_tab				ev[12];
 	t_bool				is_color;
+	t_bool				is_auto;
 };
 
 /*
@@ -144,6 +145,10 @@ int						draw_grid(t_fdf *fdf);
 int						init_tab(t_fdf *fdf);
 int						init_fdf(t_fdf *fdf);
 int						init_mlx(t_fdf *fdf);
+int						init_auto(t_fdf *fdf);
+/*
+** misc.c
+*/
 int						free_fdf(t_fdf **fdf);
 t_dot					*dot_new(t_vect *s1, t_vect *s2, t_vect *pos,
 		t_uint32 color);

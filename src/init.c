@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/09 20:21:05 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/11 17:25:39 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int			init_tab(t_fdf *fdf)
 
 int			init_fdf(t_fdf *fdf)
 {
-	fdf->is_color = ft_check_shortparam(fdf->arg->short_param, 'c');
+	fdf->is_color = !(ft_search_param(fdf->arg->long_param, NULL, "no-color"));
+	fdf->is_auto = !(ft_search_param(fdf->arg->long_param, NULL, "no-auto"));
 	ft_setparam_int(fdf->arg, "coef-gap", &(fdf->coef_gap_vector), COEF_GAP);
 	ft_setparam_int(fdf->arg, "coef-top", &(fdf->coef_top), COEF_PEAK);
 	ft_setparam_int(fdf->arg, "d-plan", &(fdf->d_plan), D_PLAN);
@@ -67,11 +68,6 @@ int			init_fdf(t_fdf *fdf)
 	ft_strlcat(fdf->title, "fdf -> ", 50);
 	ft_strlcat(fdf->title, fdf->file, 50);
 	fdf->grid = NULL;
-	fdf->center = ft_vect_new(fdf->size_win_x / 2, fdf->size_win_y / 2, 0);
-	fdf->unit0 = ft_vect_new(fdf->center->x, fdf->center->y, 0);
-	fdf->plan0 = ft_vect_new(fdf->center->x, fdf->center->y, fdf->d_plan);
-	fdf->user0 = ft_vect_new(fdf->center->x, fdf->center->y,
-			fdf->d_plan + fdf->d_user);
 	init_tab(fdf);
 	return (TRUE);
 }
@@ -92,44 +88,23 @@ int			init_mlx(t_fdf *fdf)
 	return (TRUE);
 }
 
-int			free_fdf(t_fdf **fdf)
+int			init_auto(t_fdf *fdf)
 {
-	t_fdf	*fd;
-	int		i;
+	int				size_win;
+	int				size_fil;
 
-	fd = *fdf;
-	ft_freearg(&(fd->arg));
-	ft_memdel((void**)&(fd->mlx));
-	ft_memdel((void**)&(fd->center));
-	ft_memdel((void**)&(fd->title));
-	ft_memdel((void**)&(fd->file));
-	i = 0;
-	while (i < (fd->col * fd->row))
+	if (fdf->is_auto)
 	{
-		ft_memdel((void**)&(fd->grid[i]->dot3));
-		ft_memdel((void**)&(fd->grid[i]->dot2));
-		ft_memdel((void**)&(fd->grid[i]));
-		i++;
+		size_win = ((fdf->size_win_x > fdf->size_win_y) ?
+				fdf->size_win_x : fdf->size_win_y);
+		size_fil = ((fdf->col > fdf->row) ?
+				fdf->col : fdf->row);
+		fdf->d_plan = fdf->d_plan * size_fil / ( 12.0 * size_win / 900.0);
 	}
-	ft_memdel((void**)&(fd->grid));
-	ft_memdel((void**)&(fd->unit0));
-	ft_memdel((void**)&(fd->plan0));
-	ft_memdel((void**)&(fd->user0));
-	ft_memdel((void**)fdf);
+	fdf->center = ft_vect_new(fdf->size_win_x / 2, fdf->size_win_y / 2, 0);
+	fdf->unit0 = ft_vect_new(fdf->center->x, fdf->center->y, 0);
+	fdf->plan0 = ft_vect_new(fdf->center->x, fdf->center->y, fdf->d_plan);
+	fdf->user0 = ft_vect_new(fdf->center->x, fdf->center->y,
+			fdf->d_plan + fdf->d_user);
 	return (TRUE);
-}
-
-t_dot		*dot_new(t_vect *s1, t_vect *s2, t_vect *pos, t_uint32 color)
-{
-	t_dot	*dot;
-
-	if ((!(dot = ft_memalloc(sizeof(*dot)))))
-		return (NULL);
-	dot->dot2 = s2;
-	dot->dot3 = s1;
-	dot->x = pos->x;
-	dot->y = pos->y;
-	dot->color = color;
-	ft_memdel((void**)&pos);
-	return (dot);
 }
