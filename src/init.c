@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/11 17:25:39 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/15 18:02:20 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int			init_auto(t_fdf *fdf)
 				fdf->size_win_x : fdf->size_win_y);
 		size_fil = ((fdf->col > fdf->row) ?
 				fdf->col : fdf->row);
-		fdf->d_plan = fdf->d_plan * size_fil / ( 12.0 * size_win / 900.0);
+		fdf->d_plan = fdf->d_plan * size_fil / (12.0 * size_win / 900.0);
 	}
 	fdf->center = ft_vect_new(fdf->size_win_x / 2, fdf->size_win_y / 2, 0);
 	fdf->unit0 = ft_vect_new(fdf->center->x, fdf->center->y, 0);
