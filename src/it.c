@@ -6,16 +6,14 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:03:18 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/15 16:17:37 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/16 16:16:51 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <libft.h>
-#include "fdf.h"
-
 #include <stdlib.h>
-#include <stdio.h>
+#include "fdf.h"
 
 int			expose_win(t_fdf *fdf)
 {

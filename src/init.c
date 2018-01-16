@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 12:38:39 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/15 18:02:20 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/16 16:17:12 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <libft.h>
 #include <vector.h>
 #include "fdf.h"
-
-#include <stdio.h>
 
 int			init_tab(t_fdf *fdf)
 {

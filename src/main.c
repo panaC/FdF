@@ -6,15 +6,13 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:10:25 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/15 16:17:42 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/16 16:16:14 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <libft.h>
 #include "fdf.h"
-
-#include <stdio.h>
 
 int			main(int ac, char **av)
 {

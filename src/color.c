@@ -6,15 +6,13 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 11:00:22 by pleroux           #+#    #+#             */
-/*   Updated: 2018/01/11 21:50:06 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/16 16:16:34 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fdf.h"
 #include <stdlib.h>
-
-#include <stdio.h>
 
 t_uint32		get_color(t_fdf *fdf, char *str)
 {
