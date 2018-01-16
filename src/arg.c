@@ -6,7 +6,7 @@
 /*   By: pierre <pleroux@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 13:43:55 by pierre            #+#    #+#             */
-/*   Updated: 2018/01/15 19:14:12 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/01/16 15:19:44 by pleroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ t_bool				check_arg(t_fdf *fdf, int ac, char **av)
 {
 	if ((!(fdf->arg = ft_get_arg(ac, av))))
 		return (FALSE);
-	printf("print arg\n");
+	printf(" print arg\n");
 	ft_putlst(fdf->arg->long_param);
-	printf("check %d\n", ft_check_longparam(fdf->arg->long_param, set_arg(), TRUE));
+	printf(" check %d\n", ft_check_longparam(fdf->arg->long_param, set_arg(), TRUE));
 	if (!fdf->arg->state || ft_lstlen(fdf->arg->data_param) != 1 ||
 			!ft_check_longparam(fdf->arg->long_param, set_arg(), TRUE))
 		return (error_arg(av[0]));
