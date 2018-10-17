@@ -2,6 +2,11 @@
 
 Fil de Fer - 42
 
+## feature 
+
+- I have implementing transformation matrix and projection matrix with linear algebra
+- develop with the minilib X library provide with pdf subject file
+	- Minimal X library than can put only one color pixel at once in the windows
 
 ## Usage
 
@@ -47,3 +52,6 @@ A map contain only the dot top for each coordinate
 
 ![3](https://github.com/panaC/FdF/raw/master/img/3.png)
 
+## time flow
+
+- 1 month with learning the website [scractapixel](https://www.scratchapixel.com/)
