@@ -6,7 +6,7 @@
 /*   By: pleroux <pleroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 11:00:22 by pleroux           #+#    #+#             */
-/*   Updated: 2018/01/16 16:16:34 by pleroux          ###   ########.fr       */
+/*   Updated: 2018/10/17 11:58:19 by pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_uint32		*set_tab_col_deg(t_uint32 sc, t_uint32 ec, int d)
 		return (NULL);
 	ret[0] = (t_uint32)sc;
 	ret[1] = (t_uint32)ec;
-	ret[2] = (ft_abs((sc & 0xFF - ec & 0xFF))
+	ret[2] = (ft_abs((sc & (0xFF - ec) & 0xFF))
 			/ ft_abs((d ? d : 1)));
 	ret[3] = (ft_abs((((sc >> 8) & 0xFF) - ((ec >> 8) & 0xFF)))
 			/ ft_abs((d ? d : 1)));
