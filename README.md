@@ -32,3 +32,18 @@ A map contain only the dot top for each coordinate
  s - x :
 	Zoom z axes
 ```
+
+## demo
+
+> ./fdf --size-win=1800,1000 --coef-top=30 maps/julia.fdf
+
+![1](https://github.com/panaC/FdF/raw/master/img/1.png)
+
+> ./fdf --size-win=1800,1000 --coef-top=30 maps/elem-fract.fdf
+
+![2](https://github.com/panaC/FdF/raw/master/img/2.png)
+
+> ./fdf --size-win=1800,1000 maps/t1.fdf
+
+![3](https://github.com/panaC/FdF/raw/master/img/3.png)
+
